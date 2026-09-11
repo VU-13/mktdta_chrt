@@ -34,7 +34,7 @@ SECTORS = {
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
             "EU": ["SOP.PA", "REY.MI", "BC8.DE", "COK.DE", "ATE.PA"],  # Sopra Steria, Reply, Bechtle, Cancom, Alten
-            "US": ["DAVA", "PRFT"],                 # Endava, Perficient
+            "US": ["DAVA", "GDYN"],                 # Endava, Grid Dynamics (replaces PRFT/Perficient, taken private Oct 2024)
         },
     },
     "manufacturing": {
@@ -42,7 +42,7 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
-            "EU": ["AALB.AS", "AAG.DE", "BOY.L", "ROR.L", "RNO.L"],  # Aalberts, Aumann, Bodycote, Rotork, Renold
+            "EU": ["AALB.AS", "AAG.DE", "BOY.L", "ROR.L", "TRI.L"],  # Aalberts, Aumann, Bodycote, Rotork, Trifast (replaces Renold, being taken private)
             "US": ["MLI"],                          # Mueller Industries
         },
     },
@@ -51,8 +51,8 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.5, "US": 0.5},
         "companies": {
-            "EU": ["KORI.PA"],                      # Korian
-            "US": ["CYH", "SEM", "ENSG", "MODV"],   # Community Health, Select Medical, Ensign, ModivCare
+            "EU": ["KORI.PA"],                      # Korian -- currently returning no EV/EBITDA via yfinance; keep an eye on it, may need a substitute (candidates are scarce: most EU hospital groups are PE-owned/delisted)
+            "US": ["CYH", "EHC", "ENSG", "MODV"],   # Community Health, Encompass Health (replaces SEM/Select Medical, taken private Jun 2026), Ensign, ModivCare
         },
     },
     "logistics": {
@@ -60,7 +60,7 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
-            "EU": ["PNL.AS", "BPOST.BR", "CTT.LS", "WIN.L", "DSV.CO"],  # PostNL, bpost, CTT, Wincanton, DSV
+            "EU": ["PNL.AS", "BPOST.BR", "CTT.LS", "STF.PA", "DSV.CO"],  # PostNL, bpost, CTT, Stef (replaces Wincanton, acquired by GXO), DSV
             "US": ["ARCB"],                         # ArcBest
         },
     },
@@ -69,8 +69,8 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
-            "EU": ["ZAL.DE", "YOU.DE", "CDON.ST", "ASC.L", "BOO.L"],  # Zalando, About You, CDON, ASOS, boohoo
-            "US": ["FLWS"],                         # 1-800-Flowers
+            "EU": ["ZAL.DE", "GFG.DE", "CDON.ST", "ASC.L", "DEBS.L"],  # Zalando, Global Fashion Group (replaces About You, delisted), CDON, ASOS, Debenhams Group (boohoo's new ticker, same company)
+            "US": ["FLWS", "SFIX"],                 # 1-800-Flowers, Stitch Fix (added for redundancy — FLWS alone returned no data last run)
         },
     },
     "telecom": {
