@@ -8,31 +8,31 @@
   "it_services": {
     "label": "IT Services",
     "final_multiple": 7.97,
-    "three_month_avg": 7.89,
+    "three_month_avg": 7.91,
     "last_updated": "2026-09-11"
   },
   "manufacturing": {
     "label": "Manufacturing",
-    "final_multiple": 7.69,
-    "three_month_avg": 7.87,
+    "final_multiple": 8.9,
+    "three_month_avg": 8.08,
     "last_updated": "2026-09-11"
   },
   "healthcare_services": {
     "label": "Healthcare Services",
     "final_multiple": 9.36,
-    "three_month_avg": 10.18,
+    "three_month_avg": 10.02,
     "last_updated": "2026-09-11"
   },
   "logistics": {
     "label": "Logistics",
-    "final_multiple": 6.43,
-    "three_month_avg": 6.42,
+    "final_multiple": 8.62,
+    "three_month_avg": 6.86,
     "last_updated": "2026-09-11"
   },
   "ecommerce": {
     "label": "E-commerce",
     "final_multiple": 18.66,
-    "three_month_avg": 21.87,
+    "three_month_avg": 21.23,
     "last_updated": "2026-09-11"
   },
   "telecom": {
