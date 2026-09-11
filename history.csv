@@ -1,0 +1,8 @@
+date,sector,label,eu_avg,eu_n,us_avg,us_n,bvb_manual,blended_raw,discount,final_multiple
+2026-09-11,saas,SaaS,18.19,2,39.92,3,,29.06,0.25,21.79
+2026-09-11,it_services,IT Services,10.2,5,11.27,1,,10.41,0.25,7.81
+2026-09-11,manufacturing,Manufacturing,10.67,4,10.96,1,,10.73,0.25,8.05
+2026-09-11,healthcare_services,Healthcare Services,,0,14.35,2,,14.35,0.25,10.77
+2026-09-11,logistics,Logistics,7.82,4,11.44,1,,8.54,0.25,6.41
+2026-09-11,ecommerce,E-commerce,32.6,2,,0,,32.6,0.25,24.45
+2026-09-11,telecom,Telecom,10.29,4,12.61,1,,10.75,0.25,8.06

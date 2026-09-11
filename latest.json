@@ -1,0 +1,44 @@
+{
+  "saas": {
+    "label": "SaaS",
+    "final_multiple": 21.79,
+    "three_month_avg": 21.79,
+    "last_updated": "2026-09-11"
+  },
+  "it_services": {
+    "label": "IT Services",
+    "final_multiple": 7.81,
+    "three_month_avg": 7.81,
+    "last_updated": "2026-09-11"
+  },
+  "manufacturing": {
+    "label": "Manufacturing",
+    "final_multiple": 8.05,
+    "three_month_avg": 8.05,
+    "last_updated": "2026-09-11"
+  },
+  "healthcare_services": {
+    "label": "Healthcare Services",
+    "final_multiple": 10.77,
+    "three_month_avg": 10.77,
+    "last_updated": "2026-09-11"
+  },
+  "logistics": {
+    "label": "Logistics",
+    "final_multiple": 6.41,
+    "three_month_avg": 6.41,
+    "last_updated": "2026-09-11"
+  },
+  "ecommerce": {
+    "label": "E-commerce",
+    "final_multiple": 24.45,
+    "three_month_avg": 24.45,
+    "last_updated": "2026-09-11"
+  },
+  "telecom": {
+    "label": "Telecom",
+    "final_multiple": 8.06,
+    "three_month_avg": 8.06,
+    "last_updated": "2026-09-11"
+  }
+}
