@@ -88,3 +88,9 @@ HISTORY_FILE = "history.csv"
 BVB_MANUAL_FILE = "bvb_manual.csv"
 LATEST_OUTPUT_FILE = "latest.json"
 ROLLING_WINDOW_DAYS = 92  # ~3 months, used for the rolling average
+
+# Individual company EV/EBITDA readings outside this range are treated as
+# outliers/data errors and excluded from the sector average (e.g. a near-zero
+# EBITDA blowing up the ratio, or a stale/bad data point from the source).
+MIN_PLAUSIBLE_MULTIPLE = 3
+MAX_PLAUSIBLE_MULTIPLE = 80
