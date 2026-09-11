@@ -1,0 +1,90 @@
+"""
+Configuration for the EV/EBITDA sector multiples pipeline.
+
+Edit tickers, weights, or discounts here as your comp set evolves —
+fetch_multiples.py never needs to change for that.
+
+Ticker suffixes follow Yahoo Finance conventions:
+  .DE Germany (Xetra)        .PA France (Euronext Paris)
+  .MI Italy (Milan)          .AS Netherlands (Amsterdam)
+  .BR Belgium (Brussels)     .LS Portugal (Lisbon)
+  .L  UK (London)            .ST Sweden (Stockholm)
+  .HE Finland (Helsinki)     .CO Denmark (Copenhagen)
+  (no suffix = US-listed, NYSE/Nasdaq)
+
+NOTE: this is a first-draft basket built from general market knowledge,
+not verified against live data. The first run will print [skip]/[error]
+for any ticker yfinance can't resolve or that has no EV/EBITDA populated
+(delisted, acquired, renamed, data gap) — prune/replace those as they show up.
+"""
+
+SECTORS = {
+    "saas": {
+        "label": "SaaS",
+        "discount": 0.25,
+        "weights": {"EU": 0.5, "US": 0.5},
+        "companies": {
+            "EU": ["NEM.DE", "SGE.L"],              # Nemetschek, Sage Group
+            "US": ["MNDY", "PD", "FRSH"],           # monday.com, PagerDuty, Freshworks
+        },
+    },
+    "it_services": {
+        "label": "IT Services",
+        "discount": 0.25,
+        "weights": {"EU": 0.8, "US": 0.2},
+        "companies": {
+            "EU": ["SOP.PA", "REY.MI", "BC8.DE", "COK.DE", "ATE.PA"],  # Sopra Steria, Reply, Bechtle, Cancom, Alten
+            "US": ["DAVA", "PRFT"],                 # Endava, Perficient
+        },
+    },
+    "manufacturing": {
+        "label": "Manufacturing",
+        "discount": 0.25,
+        "weights": {"EU": 0.8, "US": 0.2},
+        "companies": {
+            "EU": ["AALB.AS", "AAG.DE", "BOY.L", "ROR.L", "RNO.L"],  # Aalberts, Aumann, Bodycote, Rotork, Renold
+            "US": ["MLI"],                          # Mueller Industries
+        },
+    },
+    "healthcare_services": {
+        "label": "Healthcare Services",
+        "discount": 0.25,
+        "weights": {"EU": 0.5, "US": 0.5},
+        "companies": {
+            "EU": ["KORI.PA"],                      # Korian
+            "US": ["CYH", "SEM", "ENSG", "MODV"],   # Community Health, Select Medical, Ensign, ModivCare
+        },
+    },
+    "logistics": {
+        "label": "Logistics",
+        "discount": 0.25,
+        "weights": {"EU": 0.8, "US": 0.2},
+        "companies": {
+            "EU": ["PNL.AS", "BPOST.BR", "CTT.LS", "WIN.L", "DSV.CO"],  # PostNL, bpost, CTT, Wincanton, DSV
+            "US": ["ARCB"],                         # ArcBest
+        },
+    },
+    "ecommerce": {
+        "label": "E-commerce",
+        "discount": 0.25,
+        "weights": {"EU": 0.8, "US": 0.2},
+        "companies": {
+            "EU": ["ZAL.DE", "YOU.DE", "CDON.ST", "ASC.L", "BOO.L"],  # Zalando, About You, CDON, ASOS, boohoo
+            "US": ["FLWS"],                         # 1-800-Flowers
+        },
+    },
+    "telecom": {
+        "label": "Telecom",
+        "discount": 0.25,
+        "weights": {"EU": 0.8, "US": 0.2},
+        "companies": {
+            "EU": ["FNTN.DE", "UTDI.DE", "ELISA.HE", "TEL2-B.ST"],  # freenet, United Internet, Elisa, Tele2
+            "US": ["SHEN"],                         # Shenandoah Telecom
+        },
+    },
+}
+
+HISTORY_FILE = "history.csv"
+BVB_MANUAL_FILE = "bvb_manual.csv"
+LATEST_OUTPUT_FILE = "latest.json"
+ROLLING_WINDOW_DAYS = 92  # ~3 months, used for the rolling average
