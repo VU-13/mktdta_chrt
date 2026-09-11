@@ -8,15 +8,17 @@ or any other scheduler):
 
 What it does:
   1. Pulls EV and EBITDA for every configured ticker via yfinance (free, no API key).
-  2. Averages EV/EBITDA per region (EU/US) within each sector.
-  3. Blends EU/US using the sector's configured weight (auto-renormalized if one
+  2. Excludes implausible individual readings (EV/EBITDA below 3x or above 80x —
+     see MIN/MAX_PLAUSIBLE_MULTIPLE in config.py) before averaging.
+  3. Averages EV/EBITDA per region (EU/US) within each sector.
+  4. Blends EU/US using the sector's configured weight (auto-renormalized if one
      region has no usable data this week).
-  4. Folds in a manual BVB data point for the sector, if one was added to
+  5. Folds in a manual BVB data point for the sector, if one was added to
      bvb_manual.csv for today's date.
-  5. Applies the sector's illiquidity discount.
-  6. Appends one row per sector to history.csv (point your WP chart plugin at this
+  6. Applies the sector's illiquidity discount.
+  7. Appends one row per sector to history.csv (point your WP chart plugin at this
      file for the time series).
-  7. Recomputes the trailing ~3-month average per sector and writes latest.json
+  8. Recomputes the trailing ~3-month average per sector and writes latest.json
      (a compact snapshot for the page).
 """
 
@@ -34,13 +36,15 @@ from config import (
     BVB_MANUAL_FILE,
     LATEST_OUTPUT_FILE,
     ROLLING_WINDOW_DAYS,
+    MIN_PLAUSIBLE_MULTIPLE,
+    MAX_PLAUSIBLE_MULTIPLE,
 )
 
 TODAY = date.today().isoformat()
 
 
 def get_ev_ebitda(ticker: str):
-    """Return EV/EBITDA for a ticker, or None if data is unavailable/unreliable."""
+    """Return EV/EBITDA for a ticker, or None if data is unavailable/unreliable/an outlier."""
     try:
         info = yf.Ticker(ticker).info
         ev = info.get("enterpriseValue")
@@ -48,7 +52,15 @@ def get_ev_ebitda(ticker: str):
         if not ev or not ebitda or ebitda <= 0:
             print(f"  [skip] {ticker}: missing/invalid EV or EBITDA", file=sys.stderr)
             return None
-        return ev / ebitda
+        multiple = ev / ebitda
+        if multiple < MIN_PLAUSIBLE_MULTIPLE or multiple > MAX_PLAUSIBLE_MULTIPLE:
+            print(
+                f"  [outlier] {ticker}: EV/EBITDA={multiple:.1f}x is outside "
+                f"[{MIN_PLAUSIBLE_MULTIPLE}, {MAX_PLAUSIBLE_MULTIPLE}], excluded from the average",
+                file=sys.stderr,
+            )
+            return None
+        return multiple
     except Exception as exc:  # yfinance can raise all sorts of things
         print(f"  [error] {ticker}: {exc}", file=sys.stderr)
         return None
@@ -128,7 +140,15 @@ def main():
 
         # Fold in a manual BVB data point for this sector, if provided today,
         # as an equal-weight extra observation alongside the blended EU/US figure.
+        # Subject to the same plausibility bounds as the automated readings.
         bvb_value = bvb_today.get(sector_key)
+        if bvb_value is not None and not (MIN_PLAUSIBLE_MULTIPLE <= bvb_value <= MAX_PLAUSIBLE_MULTIPLE):
+            print(
+                f"  [outlier] BVB manual entry for {sector_key}: {bvb_value:.1f}x is outside "
+                f"[{MIN_PLAUSIBLE_MULTIPLE}, {MAX_PLAUSIBLE_MULTIPLE}], excluded",
+                file=sys.stderr,
+            )
+            bvb_value = None
         if bvb_value is not None:
             blended_raw = (blended_raw + bvb_value) / 2
 
