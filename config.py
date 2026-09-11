@@ -51,7 +51,7 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.5, "US": 0.5},
         "companies": {
-            "EU": ["KORI.PA"],                      # Korian -- currently returning no EV/EBITDA via yfinance; keep an eye on it, may need a substitute (candidates are scarce: most EU hospital groups are PE-owned/delisted)
+            "EU": ["KORI.PA", "FRE.DE"],             # Korian, Fresenius SE (Helios hospitals) -- Fresenius is larger than the sector's mid-cap target, added for reliable EU coverage since Korian alone keeps returning no data
             "US": ["CYH", "EHC", "ENSG", "MODV"],   # Community Health, Encompass Health (replaces SEM/Select Medical, taken private Jun 2026), Ensign, ModivCare
         },
     },
@@ -70,7 +70,7 @@ SECTORS = {
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
             "EU": ["ZAL.DE", "GFG.DE", "CDON.ST", "ASC.L", "DEBS.L"],  # Zalando, Global Fashion Group (replaces About You, delisted), CDON, ASOS, Debenhams Group (boohoo's new ticker, same company)
-            "US": ["FLWS", "SFIX"],                 # 1-800-Flowers, Stitch Fix (added for redundancy — FLWS alone returned no data last run)
+            "US": ["FLWS", "SFIX", "ETSY"],         # 1-800-Flowers, Stitch Fix, Etsy (added -- usually profitable, should fix the recurring no-data weeks)
         },
     },
     "telecom": {
