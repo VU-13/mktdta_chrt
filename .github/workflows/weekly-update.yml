@@ -28,4 +28,5 @@ jobs:
           git config user.email "actions@github.com"
           git add history.csv latest.json
           git diff --cached --quiet || git commit -m "Weekly multiples update"
+          git pull --rebase origin main
           git push
