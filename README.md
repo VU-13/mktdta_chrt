@@ -56,7 +56,7 @@ Point a chart plugin (e.g. **Visualizer — Charts & Maps**) at the raw CSV
 URL for the time series:
 
 ```
-https://raw.githubusercontent.com/<your-username>/<your-repo>/main/history.csv
+https://raw.githubusercontent.com/VU-13/mktdta_chrt/main/history.csv
 ```
 
 For the "3-month average" callout on the page, either:
