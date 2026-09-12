@@ -52,7 +52,7 @@ SECTORS = {
         "weights": {"EU": 0.5, "US": 0.5},
         "companies": {
             "EU": ["KORI.PA", "FRE.DE"],             # Korian, Fresenius SE (Helios hospitals) -- Fresenius is larger than the sector's mid-cap target, added for reliable EU coverage since Korian alone keeps returning no data
-            "US": ["CYH", "EHC", "ENSG", "MODV"],   # Community Health, Encompass Health (replaces SEM/Select Medical, taken private Jun 2026), Ensign, ModivCare
+            "US": ["CYH", "EHC", "ENSG", "USPH"],   # Community Health, Encompass Health, Ensign, U.S. Physical Therapy (replaces ModivCare -- no EBITDA data)
         },
     },
     "logistics": {
@@ -69,7 +69,7 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
-            "EU": ["ZAL.DE", "GFG.DE", "CDON.ST", "ASC.L", "DEBS.L"],  # Zalando, Global Fashion Group (replaces About You, delisted), CDON, ASOS, Debenhams Group (boohoo's new ticker, same company)
+            "EU": ["ZAL.DE", "DHER.DE", "CDON.ST", "ASC.L", "DEBS.L"],  # Zalando, Delivery Hero (replaces Global Fashion Group -- no EBITDA data), CDON, ASOS, Debenhams Group
             "US": ["FLWS", "SFIX", "ETSY"],         # 1-800-Flowers, Stitch Fix, Etsy (added -- usually profitable, should fix the recurring no-data weeks)
         },
     },
@@ -87,8 +87,8 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
-            "EU": ["PAGE.L", "RWA.L", "STEM.L", "MRL.L"],  # PageGroup, Robert Walters, SThree, Marlowe
-            "US": ["EFOR", "HSII"],                 # Everforth (renamed from ASGN Incorporated, Apr 2026), Heidrick & Struggles
+            "EU": ["PAGE.L", "STEM.L", "RWS.L"],    # PageGroup, SThree, RWS Holdings (replaces Marlowe/404 bug and Robert Walters/no data)
+            "US": ["EFOR", "KFY"],                  # Everforth, Korn Ferry (replaces Heidrick & Struggles/404 bug)
         },
     },
     "cosmetics_beauty": {
@@ -105,8 +105,8 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
-            "EU": ["CWK.L", "GNC.L", "BON.PA", "FIF.L"],  # Cranswick, Greencore, Bonduelle, Finsbury Food Group (replaces Bakkavor, acquired by Greencore & delisted Jan 2026)
-            "US": ["JBSS", "LANC", "SMPL"],         # John B. Sanfilippo & Son, Lancaster Colony, Simply Good Foods
+            "EU": ["CWK.L", "GNC.L", "BON.PA"],     # Cranswick, Greencore, Bonduelle (dropped Finsbury Food -- no EBITDA data)
+            "US": ["JBSS", "JJSF", "SMPL"],         # John B. Sanfilippo & Son, J&J Snack Foods (replaces Lancaster Colony/404 bug), Simply Good Foods
         },
     },
     "fmcg": {
@@ -132,7 +132,7 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
-            "EU": ["GMM.DE", "SFQ.DE", "POM.PA"],   # Grammer, SAF-Holland, Plastic Omnium
+            "EU": ["GMM.DE", "SFQ.DE"],              # Grammer, SAF-Holland (dropped Plastic Omnium -- no EBITDA data)
             "US": ["DORM", "MOD", "SMP"],           # Dorman Products, Modine Manufacturing, Standard Motor Products
         },
     },
@@ -151,7 +151,7 @@ SECTORS = {
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
             "EU": ["TLW.L", "HBR.L", "SQZ.L"],      # Tullow Oil, Harbour Energy, Serica Energy
-            "US": ["RRC", "MTDR", "CIVI"],          # Range Resources, Matador Resources, Civitas Resources
+            "US": ["RRC", "MTDR", "SM"],             # Range Resources, Matador Resources, SM Energy (replaces Civitas Resources/404 bug)
         },
     },
     "energy": {
