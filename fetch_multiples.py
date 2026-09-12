@@ -24,7 +24,9 @@ What it does:
 
 import csv
 import json
+import random
 import sys
+import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
@@ -42,33 +44,52 @@ from config import (
 
 TODAY = date.today().isoformat()
 
+# Yahoo Finance (via yfinance) will intermittently 404/error perfectly valid,
+# still-listed tickers when hit with a burst of requests in a row -- common
+# from shared CI IPs like GitHub Actions runners. A short pause between
+# requests plus a couple of retries clears up most of these false failures.
+REQUEST_DELAY_SECONDS = 1.0
+MAX_RETRIES = 3
+
 
 def get_ev_ebitda(ticker: str):
     """Return EV/EBITDA for a ticker, or None if data is unavailable/unreliable/an outlier."""
-    try:
-        info = yf.Ticker(ticker).info
-        ev = info.get("enterpriseValue")
-        ebitda = info.get("ebitda")
-        if not ev or not ebitda or ebitda <= 0:
-            print(f"  [skip] {ticker}: missing/invalid EV or EBITDA", file=sys.stderr)
-            return None
-        multiple = ev / ebitda
-        if multiple < MIN_PLAUSIBLE_MULTIPLE or multiple > MAX_PLAUSIBLE_MULTIPLE:
-            print(
-                f"  [outlier] {ticker}: EV/EBITDA={multiple:.1f}x is outside "
-                f"[{MIN_PLAUSIBLE_MULTIPLE}, {MAX_PLAUSIBLE_MULTIPLE}], excluded from the average",
-                file=sys.stderr,
-            )
-            return None
-        return multiple
-    except Exception as exc:  # yfinance can raise all sorts of things
-        print(f"  [error] {ticker}: {exc}", file=sys.stderr)
-        return None
+    last_error = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            info = yf.Ticker(ticker).info
+            ev = info.get("enterpriseValue")
+            ebitda = info.get("ebitda")
+            if not ev or not ebitda or ebitda <= 0:
+                print(f"  [skip] {ticker}: missing/invalid EV or EBITDA", file=sys.stderr)
+                return None
+            multiple = ev / ebitda
+            if multiple < MIN_PLAUSIBLE_MULTIPLE or multiple > MAX_PLAUSIBLE_MULTIPLE:
+                print(
+                    f"  [outlier] {ticker}: EV/EBITDA={multiple:.1f}x is outside "
+                    f"[{MIN_PLAUSIBLE_MULTIPLE}, {MAX_PLAUSIBLE_MULTIPLE}], excluded from the average",
+                    file=sys.stderr,
+                )
+                return None
+            return multiple
+        except Exception as exc:  # yfinance can raise all sorts of things
+            last_error = exc
+            if attempt < MAX_RETRIES:
+                wait = REQUEST_DELAY_SECONDS * attempt * 2
+                print(f"  [retry] {ticker}: attempt {attempt} failed ({exc}), retrying in {wait:.1f}s", file=sys.stderr)
+                time.sleep(wait)
+    print(f"  [error] {ticker}: giving up after {MAX_RETRIES} attempts ({last_error})", file=sys.stderr)
+    return None
 
 
 def region_average(tickers):
     """Mean EV/EBITDA across a list of tickers. Returns (mean_or_None, n_used)."""
-    values = [v for v in (get_ev_ebitda(t) for t in tickers) if v is not None]
+    values = []
+    for t in tickers:
+        v = get_ev_ebitda(t)
+        if v is not None:
+            values.append(v)
+        time.sleep(REQUEST_DELAY_SECONDS + random.uniform(0, 0.5))  # space out requests to avoid rate-limiting
     if not values:
         return None, 0
     return sum(values) / len(values), len(values)
