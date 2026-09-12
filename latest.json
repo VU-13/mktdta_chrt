@@ -8,31 +8,31 @@
   "it_services": {
     "label": "IT Services",
     "final_multiple": 8.1,
-    "three_month_avg": 7.9,
+    "three_month_avg": 8.0,
     "last_updated": "2026-09-12"
   },
   "manufacturing": {
     "label": "Manufacturing",
     "final_multiple": 8.9,
-    "three_month_avg": 8.2,
+    "three_month_avg": 8.3,
     "last_updated": "2026-09-12"
   },
   "healthcare_services": {
     "label": "Healthcare Services",
     "final_multiple": 9.4,
-    "three_month_avg": 9.9,
+    "three_month_avg": 9.8,
     "last_updated": "2026-09-12"
   },
   "logistics": {
     "label": "Logistics",
     "final_multiple": 8.6,
-    "three_month_avg": 7.1,
+    "three_month_avg": 7.4,
     "last_updated": "2026-09-12"
   },
   "ecommerce": {
     "label": "E-commerce",
     "final_multiple": 18.5,
-    "three_month_avg": 20.8,
+    "three_month_avg": 20.4,
     "last_updated": "2026-09-12"
   },
   "telecom": {
@@ -43,8 +43,8 @@
   },
   "b2b_services": {
     "label": "B2B Services",
-    "final_multiple": 13.2,
-    "three_month_avg": 13.2,
+    "final_multiple": 11.7,
+    "three_month_avg": 12.4,
     "last_updated": "2026-09-12"
   },
   "cosmetics_beauty": {
