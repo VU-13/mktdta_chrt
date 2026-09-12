@@ -88,7 +88,7 @@ SECTORS = {
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
             "EU": ["PAGE.L", "RWA.L", "STEM.L", "MRL.L"],  # PageGroup, Robert Walters, SThree, Marlowe
-            "US": ["ASGN", "HSII"],                 # ASGN Incorporated, Heidrick & Struggles
+            "US": ["EFOR", "HSII"],                 # Everforth (renamed from ASGN Incorporated, Apr 2026), Heidrick & Struggles
         },
     },
     "cosmetics_beauty": {
@@ -105,7 +105,7 @@ SECTORS = {
         "discount": 0.25,
         "weights": {"EU": 0.8, "US": 0.2},
         "companies": {
-            "EU": ["BAKK.L", "CWK.L", "GNC.L", "BON.PA"],  # Bakkavor, Cranswick, Greencore, Bonduelle
+            "EU": ["CWK.L", "GNC.L", "BON.PA", "FIF.L"],  # Cranswick, Greencore, Bonduelle, Finsbury Food Group (replaces Bakkavor, acquired by Greencore & delisted Jan 2026)
             "US": ["JBSS", "LANC", "SMPL"],         # John B. Sanfilippo & Son, Lancaster Colony, Simply Good Foods
         },
     },
