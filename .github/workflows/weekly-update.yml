@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name "multiples-bot"
           git config user.email "actions@github.com"
-          git add history.csv latest.json
+          git add history.csv history_wide.csv latest.json
           git diff --cached --quiet || git commit -m "Weekly multiples update"
           git pull --rebase origin main
           git push
