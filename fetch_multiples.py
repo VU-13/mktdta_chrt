@@ -153,7 +153,7 @@ def main():
             blended_raw = (blended_raw + bvb_value) / 2
 
         discount = cfg["discount"]
-        final_multiple = round(blended_raw * (1 - discount), 2)
+        final_multiple = round(blended_raw * (1 - discount), 1)
 
         history_rows.append({
             "date": TODAY,
@@ -180,7 +180,7 @@ def main():
         row["sector"]: {
             "label": row["label"],
             "final_multiple": row["final_multiple"],
-            "three_month_avg": round(three_month.get(row["sector"], row["final_multiple"]), 2),
+            "three_month_avg": round(three_month.get(row["sector"], row["final_multiple"]), 1),
             "last_updated": TODAY,
         }
         for row in history_rows
