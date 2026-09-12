@@ -139,6 +139,29 @@ def compute_three_month_averages():
     return {sector: sum(v) / len(v) for sector, v in buckets.items()}
 
 
+def write_wide_history():
+    """Rebuild history_wide.csv: one row per date, one column per sector's
+    final_multiple. Easier than the long-format history.csv for chart plugins
+    that expect one series per column (e.g. a multi-line chart with all
+    sectors together)."""
+    path = Path(HISTORY_FILE)
+    if not path.exists():
+        return
+    sector_keys = list(SECTORS.keys())
+    labels = {k: SECTORS[k]["label"] for k in sector_keys}
+    by_date = {}
+    with path.open(newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            by_date.setdefault(row["date"], {})[row["sector"]] = row["final_multiple"]
+
+    wide_path = Path("history_wide.csv")
+    with wide_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["date"] + [labels[k] for k in sector_keys])
+        for d in sorted(by_date.keys()):
+            writer.writerow([d] + [by_date[d].get(k, "") for k in sector_keys])
+
+
 def main():
     bvb_today = load_bvb_manual_for_today()
     history_rows = []
@@ -195,6 +218,7 @@ def main():
         sys.exit(1)
 
     append_history(history_rows)
+    write_wide_history()
     three_month = compute_three_month_averages()
 
     latest = {
@@ -208,7 +232,7 @@ def main():
     }
     Path(LATEST_OUTPUT_FILE).write_text(json.dumps(latest, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"Done. Wrote {len(history_rows)} rows to {HISTORY_FILE} and a snapshot to {LATEST_OUTPUT_FILE}.")
+    print(f"Done. Wrote {len(history_rows)} rows to {HISTORY_FILE}, refreshed history_wide.csv, and wrote a snapshot to {LATEST_OUTPUT_FILE}.")
 
 
 if __name__ == "__main__":
