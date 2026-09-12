@@ -2,7 +2,7 @@
   "saas": {
     "label": "SaaS",
     "final_multiple": 22.0,
-    "three_month_avg": 21.8,
+    "three_month_avg": 21.9,
     "last_updated": "2026-09-12"
   },
   "it_services": {
@@ -14,25 +14,25 @@
   "manufacturing": {
     "label": "Manufacturing",
     "final_multiple": 8.9,
-    "three_month_avg": 8.3,
+    "three_month_avg": 8.4,
     "last_updated": "2026-09-12"
   },
   "healthcare_services": {
     "label": "Healthcare Services",
-    "final_multiple": 9.4,
+    "final_multiple": 9.9,
     "three_month_avg": 9.8,
     "last_updated": "2026-09-12"
   },
   "logistics": {
     "label": "Logistics",
     "final_multiple": 8.6,
-    "three_month_avg": 7.4,
+    "three_month_avg": 7.5,
     "last_updated": "2026-09-12"
   },
   "ecommerce": {
     "label": "E-commerce",
     "final_multiple": 18.5,
-    "three_month_avg": 20.4,
+    "three_month_avg": 20.2,
     "last_updated": "2026-09-12"
   },
   "telecom": {
@@ -43,8 +43,8 @@
   },
   "b2b_services": {
     "label": "B2B Services",
-    "final_multiple": 11.7,
-    "three_month_avg": 12.4,
+    "final_multiple": 9.5,
+    "three_month_avg": 11.5,
     "last_updated": "2026-09-12"
   },
   "cosmetics_beauty": {
@@ -55,8 +55,8 @@
   },
   "food": {
     "label": "Food",
-    "final_multiple": 6.6,
-    "three_month_avg": 6.6,
+    "final_multiple": 6.8,
+    "three_month_avg": 6.7,
     "last_updated": "2026-09-12"
   },
   "fmcg": {
@@ -85,7 +85,7 @@
   },
   "oil_gas": {
     "label": "Oil & Gas",
-    "final_multiple": 3.3,
+    "final_multiple": 3.2,
     "three_month_avg": 3.3,
     "last_updated": "2026-09-12"
   },
