@@ -2,103 +2,103 @@
   "saas": {
     "label": "SaaS",
     "final_multiple": 22.0,
-    "three_month_avg": 21.9,
-    "last_updated": "2026-09-12"
+    "three_month_avg": 21.0,
+    "last_updated": "2026-09-13"
   },
   "it_services": {
     "label": "IT Services",
     "final_multiple": 8.1,
-    "three_month_avg": 8.0,
-    "last_updated": "2026-09-12"
+    "three_month_avg": 7.9,
+    "last_updated": "2026-09-13"
   },
   "manufacturing": {
     "label": "Manufacturing",
     "final_multiple": 8.9,
-    "three_month_avg": 8.5,
-    "last_updated": "2026-09-12"
+    "three_month_avg": 8.6,
+    "last_updated": "2026-09-13"
   },
   "healthcare_services": {
     "label": "Healthcare Services",
     "final_multiple": 9.9,
-    "three_month_avg": 9.9,
-    "last_updated": "2026-09-12"
+    "three_month_avg": 10.0,
+    "last_updated": "2026-09-13"
   },
   "logistics": {
     "label": "Logistics",
     "final_multiple": 8.6,
-    "three_month_avg": 7.7,
-    "last_updated": "2026-09-12"
+    "three_month_avg": 7.9,
+    "last_updated": "2026-09-13"
   },
   "ecommerce": {
     "label": "E-commerce",
     "final_multiple": 18.5,
-    "three_month_avg": 19.9,
-    "last_updated": "2026-09-12"
+    "three_month_avg": 19.5,
+    "last_updated": "2026-09-13"
   },
   "telecom": {
     "label": "Telecom",
     "final_multiple": 8.1,
     "three_month_avg": 8.1,
-    "last_updated": "2026-09-12"
+    "last_updated": "2026-09-13"
   },
   "b2b_services": {
     "label": "B2B Services",
     "final_multiple": 9.5,
-    "three_month_avg": 10.7,
-    "last_updated": "2026-09-12"
+    "three_month_avg": 10.5,
+    "last_updated": "2026-09-13"
   },
   "cosmetics_beauty": {
     "label": "Cosmetics / Beauty",
-    "final_multiple": 8.8,
-    "three_month_avg": 8.8,
-    "last_updated": "2026-09-12"
+    "final_multiple": 9.5,
+    "three_month_avg": 8.9,
+    "last_updated": "2026-09-13"
   },
   "food": {
     "label": "Food",
     "final_multiple": 6.8,
     "three_month_avg": 6.7,
-    "last_updated": "2026-09-12"
+    "last_updated": "2026-09-13"
   },
   "fmcg": {
     "label": "FMCG",
     "final_multiple": 11.2,
     "three_month_avg": 11.2,
-    "last_updated": "2026-09-12"
+    "last_updated": "2026-09-13"
   },
   "travel_services": {
     "label": "Travel Services",
     "final_multiple": 6.6,
     "three_month_avg": 6.6,
-    "last_updated": "2026-09-12"
+    "last_updated": "2026-09-13"
   },
   "automotive": {
     "label": "Automotive",
     "final_multiple": 5.2,
     "three_month_avg": 5.2,
-    "last_updated": "2026-09-12"
+    "last_updated": "2026-09-13"
   },
   "utilities": {
     "label": "Utilities",
     "final_multiple": 10.0,
     "three_month_avg": 10.0,
-    "last_updated": "2026-09-12"
+    "last_updated": "2026-09-13"
   },
   "oil_gas": {
     "label": "Oil & Gas",
     "final_multiple": 3.2,
     "three_month_avg": 3.2,
-    "last_updated": "2026-09-12"
+    "last_updated": "2026-09-13"
   },
   "energy": {
     "label": "Energy",
     "final_multiple": 12.3,
-    "three_month_avg": 11.9,
-    "last_updated": "2026-09-12"
+    "three_month_avg": 12.0,
+    "last_updated": "2026-09-13"
   },
   "defense": {
     "label": "Defense",
     "final_multiple": 16.9,
     "three_month_avg": 16.9,
-    "last_updated": "2026-09-12"
+    "last_updated": "2026-09-13"
   }
 }
